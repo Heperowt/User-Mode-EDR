@@ -11,7 +11,7 @@ This project is developed collaboratively as an independent open-source initiati
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 The system operates on a client-server (Agent-C2) model:
 1. **The Agent (`Agent-CSharp`):** Runs on the endpoint with administrative privileges, utilizing ETW (Event Tracing for Windows) to listen directly to kernel-level process creation events in real-time.
@@ -19,7 +19,7 @@ The system operates on a client-server (Agent-C2) model:
 
 ---
 
-## 💡 Engineering Decisions & Trade-offs (Why User-Mode?)
+## Engineering Decisions & Trade-offs (Why User-Mode?)
 
 When designing an EDR, developers face fundamental architectural trade-offs between speed, security, and OS restrictions:
 
@@ -29,12 +29,22 @@ When designing an EDR, developers face fundamental architectural trade-offs betw
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
-* Windows 10 / 11 (for the C# Agent)
-* Python 3.x (for the C2 Server)
-* .NET SDK (.NET 6.0 or higher recommended)
+* **For the C# Agent:** Windows 10 / 11 (Required due to ETW dependency).
+* **For the C2 Server:** Python 3.x (Cross-platform: Windows, Linux, or macOS).
+* **.NET SDK:** .NET 6.0 or higher (for building/running the Agent).
+
+### 1. Running the C2 Server (Python)
+Navigate to the server directory, install dependencies, and start the listener:
+
+```bash
+cd Server-Python
+pip install flask
+# Use 'python' on Windows or 'python3' on Linux/macOS:
+python3 EDR_Console.py  # or 'python EDR_Console.py'
+```
 
 ### 1. Running the C2 Server (Python)
 Navigate to the server directory, install dependencies, and start the listener:
@@ -45,8 +55,8 @@ pip install flask
 python3 EDR_Console.py
 ```
 ### 2. Running the EDR Agent (C#)
-*Open PowerShell as Administrator (required for ETW session creation).*
-Navigate to the agent directory and run the project:
+Note: Must be executed on a Windows machine.
+Open PowerShell as Administrator (required for ETW session creation), navigate to the agent directory, and run the project:
 
 ```bash
 cd Agent-CSharp

@@ -46,14 +46,6 @@ pip install flask
 python3 EDR_Console.py  # or 'python EDR_Console.py'
 ```
 
-### 1. Running the C2 Server (Python)
-Navigate to the server directory, install dependencies, and start the listener:
-
-```bash
-cd Server-Python
-pip install flask
-python3 EDR_Console.py
-```
 ### 2. Running the EDR Agent (C#)
 Note: Must be executed on a Windows machine.
 Open PowerShell as Administrator (required for ETW session creation), navigate to the agent directory, and run the project:
